@@ -11,53 +11,50 @@ export default {
 
 <template>
     <div id="header-container" class="container-fluid p-0">
-        <div class="row h-100">
-            <div class="col-2 ps-4 d-flex align-items-center headerTitle">
+        <div class="row h-100 px-2">
+            <div class="col-2 d-flex align-items-center headerTitle">
                 watch/lab
             </div>
-            <div class="col-8 d-flex align-items-center">
+            <div class="col-8 d-flex align-items-center p-0">
                 <div class="container">
                     <div class="row">
-                        <div class="col d-flex justify-content-center menuItem" v-for="headerMenuTitle in headerMenuTitles">
-                            {{ headerMenuTitle }}
+                        <div class="col d-flex flex-column align-items-center justify-content-center menuItem" v-for="headerMenuTitle in headerMenuTitles">
+                            <span class="title">
+                                {{ headerMenuTitle }}
+                            </span>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-2 d-flex justify-content-end pe-4 d-flex align-items-center">
+            <div class="col-2 p-0">
                 Searchbar
             </div>
         </div>
-        
-
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use "../styles/general.scss" as *;
 
 #header-container{
     height: $headerHeight;
-
     .headerTitle{
         background-color: $mainColor;
         color: white;
-        text-transform: uppercase;
+        text-transform: uppercase;  
     }
-
-    .menuItem{
-        transition: 0.3s;
+    .title{
+        transition: all 0.4s ease-in-out;
+        border-bottom: 0.5px solid transparent;
+        line-height: 12px;
+        opacity: 1;
         &:hover{
-            transition: 0.3s;
             cursor: pointer;
+            opacity: 0.8;
             color: $mainColor;
-            text-decoration: underline;
+            border-color: $mainColor;
         }
     }
-
 }
-
-
-
-
 </style>
