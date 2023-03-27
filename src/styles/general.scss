@@ -1,16 +1,25 @@
 @import "bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
 
 $mainColor: rgb(208,197,182);
 $headerHeight: 8vh;
 $textGray: rgb(144,144,144);
+$titleFont: 'Playfair Display', serif;
+$uppercaseTitleFont: 'Montserrat', sans-serif;
+$subtitleFont: 'Merriweather', serif;
 
 @mixin carouselButton {
+    font-family: $titleFont;
+    font-size: 22px;
     background-color: transparent;
     color: $mainColor;
-    padding: 12px 30px;
-    border: 1px solid $mainColor;
+    padding: 15px 50px;
+    border: 0.5px solid $mainColor;
     transition: linear 0.3s;
-    width: 250px;
+    width: 300px;
     &:hover{
         background-color: white;
         color: black;
@@ -20,5 +29,20 @@ $textGray: rgb(144,144,144);
 
 .textGray{
     color: $textGray;
+}
 
+.uppercaseTitle{
+    font-family: $uppercaseTitleFont;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.mainTitle{
+    font-family: $titleFont;
+}
+
+.subtitle{
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    font-size: 0.9rem;
 }
