@@ -5,16 +5,16 @@ export default {
         return{
             actualIndex: 0,
             otherIndex: 1,
-            text: [
+            content: [
                 {
                     upperTitle: 'New Selection of',
                     lowerTitle: 'Henry London',
-                    img: 'slider-bike-4.jpg',
+                    img: 'table.png',
                 },
                 {
                     upperTitle: 'The Path to Success',
                     lowerTitle: 'with Watchlab',
-                    img: 'slider-bike-9.jpg',
+                    img: 'watch.png',
                 }
             ]
         }
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     carouselIndex(){
-        if (this.actualIndex == (this.text.length - 1)){
+        if (this.actualIndex == (this.content.length - 1)){
             this.actualIndex = 0
             this.otherIndex = 1
         } else {
@@ -32,6 +32,9 @@ export default {
             this.otherIndex--
         }
     },
+    getImagePath: function (imgPath){
+        return new URL(`/src/assets/imgs/${imgPath}`, import.meta.url).href;
+    }
   }
 }
 
@@ -39,67 +42,123 @@ export default {
 
 <template>
     <div class="container-fluid p-0 carouselContainer d-flex align-items-center position-relative">
-        <div class="carouselText d-flex flex-column w-50 m-auto text-center align-items-center">
-            <p class="text-uppercase mb-5">
+        <div class="carouselText d-flex flex-column m-auto text-center align-items-center">
+            <img :src="getImagePath(content[actualIndex].img)" alt="" id="mainImg">
+            <p class="text-uppercase mb-5 uppercaseTitle">
                 london collection season
             </p>
-            <p class="mainTitle m-0">
-                {{ text[actualIndex].upperTitle }}
+            <p class="mainTitle mb-1">
+                {{ content[actualIndex].upperTitle }}
                 <br>
-                {{ text[actualIndex].lowerTitle }}
+                {{ content[actualIndex].lowerTitle }}
             </p>
-            <span>
+            <p class="subtitle mt-2">
                 An estimable experience in the modern collection house
-            </span>
-            <button class="w-25 mt-4">
-                Discover
-            </button>
+            </p>
+            <div>
+                <button class="mt-5">
+                    Discover
+                </button>
+            </div>
         </div>
-        
 
         <div class="position-absolute previewNextSlide" @click="carouselIndex">
+            <img :src="getImagePath(content[otherIndex].img)" alt="" id="previewImg">
             <div class="previewNextSlideContent">
                 <p class="previewNextSlideTitle m-5">
-                    {{ text[otherIndex].upperTitle }}
+                    {{ content[otherIndex].upperTitle }}
                     <br>
-                    {{ text[otherIndex].lowerTitle }}
+                    {{ content[otherIndex].lowerTitle }}
                 </p>
-                <span class="text-uppercase position-absolute">
-                    next >
-                </span>
+                <div class="text-uppercase position-absolute next m-0">
+                    <span>next</span>
+                    <div class="iconContainer d-flex justify-content-center align-items-center position-absolute">
+                        <font-awesome-icon :icon="['fas', 'chevron-right']" class="icon"/>
+                        <font-awesome-icon :icon="['fas', 'chevron-right']" class="icon iconNone"/>
+                        <font-awesome-icon :icon="['fas', 'chevron-right']" class="icon iconNone"/>
+                        
+                    </div>
+                </div>
             </div>
-            
         </div>
     </div>
     
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use "../../../styles/general.scss" as *;
 
 .carouselContainer{
     height: calc(100vh - $headerHeight);
-    background-color: red;
     color: white;
+
+    .mainTitle{
+        line-height: 90px;
+    }
+
+    #mainImg{
+        padding: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-fit: cover;
+    }
 
     .previewNextSlide{
         right: 70px;
         bottom: 0;
-        background-color: blue;
         height: 300px;
-        width: 450px;
+        width: 440px;
         transition: 0.3s;
         cursor: pointer;
-        span{
-            bottom: 10px;
-            right: 20px;
+        overflow: hidden;
+        .next{
+            font-family: $uppercaseTitleFont;
+            font-weight: 700;
+            bottom: 40px;
+            right: 80px;
+            letter-spacing: 3px;
         }
+
+        .iconContainer{
+                left: 75px;
+                bottom: 0;
+                transform: translate(0, -50%);
+                .icon{
+                    font-size: 0.8rem;
+                    margin-right: 2px;
+                }
+                .iconNone{
+                    opacity: 0;
+                    transition: opacity 0.3s ease-out;
+                }
+            }
+        
         .previewNextSlideTitle{
-            font-size: 1.2rem;
+            font-size: 26px;
             transition: 0.3s;
+            font-family: $titleFont;
         }
         &:hover .previewNextSlideTitle{
-            font-size: 2rem;
+            font-size: 33px;
+        }
+        &:hover #previewImg{
+            transform: scale(1.2);
+        }
+        &:hover .iconNone{
+            opacity: 1;
+        }
+        #previewImg{
+            padding: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            transition: 0.3s all ease-in-out;
         }
     }
 
