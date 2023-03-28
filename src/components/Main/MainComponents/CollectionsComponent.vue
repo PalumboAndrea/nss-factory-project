@@ -23,30 +23,40 @@ export default {
             ]
         }
     },
+    methods: {
+    getImagePath: function (imgPath){
+        return new URL(`/src/assets/imgs/${imgPath}`, import.meta.url).href;
+    }
+  }
 }
 
 </script>
 
 <template>
     <div class="container-fluid main-container text-center p-5">
-        <div class="row" :class="((index % 2 !== 0) ? 'flex-row-reverse' : '')" v-for="(text, index) in texts">
+        <div class="row g-0" :class="((index % 2 !== 0) ? 'flex-row-reverse' : '')" v-for="(text, index) in texts">
             <div class="col-6 d-flex flex-column justify-content-center align-items-center textContainer">
-                <p class="text-uppercase fw-bold">
+                <div class="w-75">
+                    <p class="text-uppercase fw-bold mb-2">
                     {{ text.collection }}
-                </p>
-                <p class="fs-1">
-                    {{ text.title }}
-                </p>
-                <p class="textGray">
-                    {{ text.description }}
-                </p>
-                <div>
-                    <button class="mt-5">
-                        View
-                    </button>
+                    </p>
+                    <p class="fs-1 textTitle mb-5">
+                        {{ text.title }}
+                    </p>
+                    <p class="text">
+                        {{ text.description }}
+                    </p>
+                    <div>
+                        <button class="mt-5">
+                            View
+                        </button>
+                    </div>
                 </div>
+                
             </div>
-            <div class="col-6 image-container p-0"></div>
+            <div class="col-6 image-container p-0">
+                <img :src="((index % 2 !== 0) ? getImagePath('houseHenryLondon.png') : getImagePath('houseTemporaryStore.png'))" alt="image">
+            </div>
         </div>
     </div>
 </template>
@@ -54,13 +64,8 @@ export default {
 <style lang="scss" scoped>
 @use "../../../styles/general.scss" as *;
 
-.row{
-    background-color: black;
-}
-
 .textContainer{
     padding: 60px;
-    
 
     button{
         @include carouselButton;
@@ -70,7 +75,16 @@ export default {
     }
 }
 .image-container{
-        background-color: blue;
-        height: 500px;
+    
+    overflow: hidden;
+    img{
+        max-width: 100%;
+        object-fit: cover;
+        transition: 0.3s all ease-in-out;
     }
+
+    &:hover img{
+        transform: scale(1.2);
+    }
+}
 </style>
