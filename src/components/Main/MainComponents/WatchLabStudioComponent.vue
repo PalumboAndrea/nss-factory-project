@@ -46,7 +46,7 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid main-container mainContainer my-5 position-relative">
+    <div class="container-fluid main-container position-relative">
         <div class="row g-0">
             <div class="col-6">
                 <p class="mainTitle mb-0">
@@ -72,7 +72,7 @@ export default {
                 <p class="text-uppercase mb-5 date">
                     {{images[actualIndex].date}}
                 </p>
-                <p class="textTitle fs-3">
+                <p class="textTitle fs-3 pe-3">
                     {{images[actualIndex].title}}
                 </p>
                 <div class="iconContainer mt-5">
