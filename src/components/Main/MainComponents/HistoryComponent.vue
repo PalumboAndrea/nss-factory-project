@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid main-container py-5 mt-5">
+    <div class="container-fluid main-container">
         <div class="row mb-4 g-0">
             <div class="col-6 p-0">
                 <h1 class="mainTitle p-0">
