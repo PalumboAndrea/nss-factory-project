@@ -34,15 +34,25 @@ $subtitleFont: 'Merriweather', serif;
 .uppercaseTitle{
     font-family: $uppercaseTitleFont;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 90px;
+    line-height: 120px;
 }
 
 .mainTitle{
     font-family: $titleFont;
+    font-size: 5rem;
 }
 
 .subtitle{
-    font-family: 'Merriweather', serif;
+    font-family: $subtitleFont;
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 20px;
+    line-height: 43px;
+}
+
+.headerTitles{
+    font-family: $subtitleFont;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12px;
 }

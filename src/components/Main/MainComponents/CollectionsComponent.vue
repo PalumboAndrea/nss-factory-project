@@ -28,7 +28,7 @@ export default {
 </script>
 
 <template>
-    <div class="container main-container text-center my-5">
+    <div class="container-fluid main-container text-center p-5">
         <div class="row" :class="((index % 2 !== 0) ? 'flex-row-reverse' : '')" v-for="(text, index) in texts">
             <div class="col-6 d-flex flex-column justify-content-center align-items-center textContainer">
                 <p class="text-uppercase fw-bold">
@@ -46,7 +46,7 @@ export default {
                     </button>
                 </div>
             </div>
-            <div class="col-6 image-container"></div>
+            <div class="col-6 image-container p-0"></div>
         </div>
     </div>
 </template>
@@ -54,6 +54,9 @@ export default {
 <style lang="scss" scoped>
 @use "../../../styles/general.scss" as *;
 
+.row{
+    background-color: black;
+}
 
 .textContainer{
     padding: 60px;
