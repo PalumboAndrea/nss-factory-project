@@ -42,17 +42,17 @@ export default {
 
 <template>
     <div class="container-fluid p-0 carouselContainer d-flex align-items-center position-relative">
-        <div class="carouselText d-flex flex-column m-auto text-center align-items-center">
+        <div class="carouselText d-flex flex-column m-auto text-center align-items-center pt-5">
             <img :src="getImagePath(content[actualIndex].img)" alt="" id="mainImg">
             <p class="text-uppercase mb-5 uppercaseTitle">
                 london collection season
             </p>
-            <p class="mainTitle mb-1">
+            <p class="mainTitle mt-3 mb-3">
                 {{ content[actualIndex].upperTitle }}
                 <br>
                 {{ content[actualIndex].lowerTitle }}
             </p>
-            <p class="subtitle mt-2">
+            <p class="subtitle">
                 An estimable experience in the modern collection house
             </p>
             <div>
@@ -65,7 +65,7 @@ export default {
         <div class="position-absolute previewNextSlide" @click="carouselIndex">
             <img :src="getImagePath(content[otherIndex].img)" alt="" id="previewImg">
             <div class="previewNextSlideContent">
-                <p class="previewNextSlideTitle m-5">
+                <p class="previewNextSlideTitle">
                     {{ content[otherIndex].upperTitle }}
                     <br>
                     {{ content[otherIndex].lowerTitle }}
@@ -76,7 +76,6 @@ export default {
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="icon"/>
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="icon iconNone"/>
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="icon iconNone"/>
-                        
                     </div>
                 </div>
             </div>
@@ -91,10 +90,6 @@ export default {
 .carouselContainer{
     height: calc(100vh - $headerHeight);
     color: white;
-
-    .mainTitle{
-        line-height: 90px;
-    }
 
     #mainImg{
         padding: 0;
@@ -137,12 +132,13 @@ export default {
             }
         
         .previewNextSlideTitle{
-            font-size: 26px;
+            font-size: 22px;
             transition: 0.3s;
+            margin: 40px;
             font-family: $titleFont;
         }
         &:hover .previewNextSlideTitle{
-            font-size: 33px;
+            font-size: 30px;
         }
         &:hover #previewImg{
             transform: scale(1.2);
@@ -151,6 +147,7 @@ export default {
             opacity: 1;
         }
         #previewImg{
+            filter: brightness(0.8);
             padding: 0;
             position: absolute;
             top: 0;
@@ -160,10 +157,6 @@ export default {
             object-fit: cover;
             transition: 0.3s all ease-in-out;
         }
-    }
-
-    .mainTitle{
-        font-size: 4rem;
     }
 
     button{

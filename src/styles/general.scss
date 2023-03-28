@@ -16,9 +16,10 @@ $subtitleFont: 'Merriweather', serif;
     font-size: 22px;
     background-color: transparent;
     color: $mainColor;
-    padding: 15px 50px;
+    opacity: 0.9;
+    padding: 13px 50px;
     border: 0.5px solid $mainColor;
-    transition: linear 0.3s;
+    transition: linear 0.4s;
     width: 300px;
     &:hover{
         background-color: white;
@@ -34,20 +35,28 @@ $subtitleFont: 'Merriweather', serif;
 .uppercaseTitle{
     font-family: $uppercaseTitleFont;
     font-weight: 700;
-    font-size: 90px;
-    line-height: 120px;
+    font-size: 18px;
 }
 
 .mainTitle{
     font-family: $titleFont;
-    font-size: 5rem;
+    font-size: 75px;
+    line-height: 90px;
 }
 
 .subtitle{
     font-family: $subtitleFont;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 43px;
+}
+
+.text{
+    color: $textGray;
+    font-family: $subtitleFont;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 35px;
 }
 
 .headerTitles{
@@ -55,4 +64,12 @@ $subtitleFont: 'Merriweather', serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 12px;
+}
+
+.main-container{
+    padding: 0 70px;
+}
+
+.textTitle{
+    font-family: $titleFont;
 }
