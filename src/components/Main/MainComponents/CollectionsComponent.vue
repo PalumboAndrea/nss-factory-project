@@ -33,7 +33,7 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid main-container text-center p-5">
+    <div class="container-fluid main-container text-center">
         <div class="row g-0" :class="((index % 2 !== 0) ? 'flex-row-reverse' : '')" v-for="(text, index) in texts">
             <div class="col-6 d-flex flex-column justify-content-center align-items-center textContainer">
                 <div class="w-75">
