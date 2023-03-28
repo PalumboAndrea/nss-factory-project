@@ -6,6 +6,11 @@ export default {
             headerMenuTitles: ['Abous Us', 'Brands', 'Projects', 'Magazine', 'Press', 'Contacts']
         }
     },
+    methods: {
+    getImagePath: function (imgPath){
+        return new URL(`/src/assets/imgs/${imgPath}`, import.meta.url).href;
+    }
+  }
 }
 </script>
 
@@ -14,7 +19,7 @@ export default {
         <div class="row h-100 g-0">
             <div class="col-3 d-flex align-items-center headerTitle">
                 <div class="logoContainer ps-3 d-flex align-items-center">
-                    <img src="../assets/imgs/logo.png" alt="logo" id="logo">
+                    <img :src="getImagePath('logo.png')" alt="logo" id="logo">
                 </div>
             </div>
             <div class="col-7">
@@ -49,8 +54,8 @@ export default {
             height: 100%;
             width: 340px;
             #logo{
-                height: 43px;
-                width: 292px;
+                transform: scale(0.8);
+                transform-origin: center left;
             }
         }
     }
