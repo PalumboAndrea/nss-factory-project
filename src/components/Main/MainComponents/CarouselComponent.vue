@@ -42,21 +42,21 @@ export default {
 
 <template>
     <div class="container-fluid p-0 carouselContainer d-flex align-items-center position-relative">
-        <div class="carouselText d-flex flex-column m-auto text-center align-items-center pt-5">
+        <div class="carouselText p-1 p-sm-0 d-flex flex-column m-auto text-center align-items-center pt-5">
             <transition name="fade" mode="out-in">
-                <img :src="getImagePath(content[actualIndex].img)" alt="" id="mainImg" class="img-fluid" :key="content[actualIndex].img">
+                <img :src="getImagePath(content[actualIndex].img)" alt="" id="mainImg" class="img-fluid" :key="actualIndex">
             </transition>
-            <p class="text-uppercase mb-5 uppercaseTitle">
+            <p class="text-uppercase mb-2 mb-sm-5 uppercaseTitle">
                 london collection season
             </p>
             <transition name="slide-fade" mode="out-in">
-                <p class="mainTitle mt-3 mb-3" :key="content[actualIndex].upperTitle">
+                <p class="mainTitle mt-0 mt-sm-3 mb-3" :key="actualIndex">
                     {{ content[actualIndex].upperTitle }}
                     <br>
                     {{ content[actualIndex].lowerTitle }}
                 </p>
             </transition>
-            <p class="subtitle">
+            <p class="subtitle w-75 w-sm-100">
                 An estimable experience in the modern collection house
             </p>
             <div>
@@ -100,39 +100,38 @@ export default {
 <style lang="scss" scoped>
 @use "../../../styles/general.scss" as *;
 
-.slide-fade-enter-active {
-  transition: all 0.2s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.2s ease-in;
-}
-
 .slide-fade-enter-from{
-  transform: translateX(-10px);
   opacity: 0;
-}
-.slide-fade-leave-to {
-  transform: translateX(10px);
-  opacity: 0;
+  transform: translateX(-5px);
 }
 
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.1s ease-in-out;
+.slide-fade-enter-to{
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.slide-fade-enter-active
+{
+  transition: all 0.3s;
+}
+
+.fade-enter-from{
   opacity: 0.9;
 }
 
+.fade-enter-to{
+  opacity: 1;
+}
 
+.fade-enter-active
+{
+  transition: all 0.3s;
+}
 
 .carouselContainer{
     height: calc(100vh - $headerHeight);
     color: white;
+
 
     #mainImg{
         padding: 0;
@@ -156,7 +155,7 @@ export default {
         @include media-breakpoint-down(lg) {
             display: flex;
             bottom: 10px;
-            left: 50%;
+            right: 25px;
             transform: translate(-50%, -50%);
         }
     }

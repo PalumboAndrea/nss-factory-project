@@ -48,7 +48,7 @@ export default {
 <template>
     <div class="container-fluid main-container position-relative">
         <div class="row g-0">
-            <div class="col-6">
+            <div class="col-12 col-lg-6">
                 <p class="mainTitle mb-0">
                     Press from
                     <br>
@@ -57,29 +57,35 @@ export default {
             </div>
         </div>
         <div class="row g-0">
-            <div class="col-4">
-                <p class="mt-5 text w-75">
+            <div class="col-12 col-md-4">
+                <p class="mt-3 mt-lg-5 text w-100 text-start pe-md-4">
                     On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain trouble
                 </p>
             </div>
-            <div class="col-5 image pb-4">
-                <img :src="getImagePath(images[actualIndex].name)" alt="image" class="img-fluid">
+            <div class="col-12 col-md-5 image pb-4 mt-5 mt-md-0">
+                <transition name="fade" mode="out-in">
+                    <img :src="getImagePath(images[actualIndex].name)" alt="image" class="img-fluid" :key="actualIndex">
+                </transition>
             </div>
-            <div class="col-3 ps-5">
+            <div class="col-12 col-md-3 ps-0 ps-md-2 ps-lg-5 text-start textContainer">
                 <span class="text-uppercase fw-bold">
                     press
                 </span>
-                <p class="text-uppercase mb-5 date">
-                    {{images[actualIndex].date}}
-                </p>
-                <p class="textTitle fs-3 pe-3">
-                    {{images[actualIndex].title}}
-                </p>
-                <div class="iconContainer mt-5">
+                <transition name="slide-fade" mode="out-in">
+                    <p class="text-uppercase mb-4 mb-md-5 date" :key="actualIndex">
+                        {{images[actualIndex].date}}
+                    </p>
+                </transition>
+                <transition name="slide-fade" mode="out-in">
+                    <p class="textTitle pe-3 mb-0" :key="actualIndex">
+                        {{images[actualIndex].title}}
+                    </p>
+                </transition>
+                <div class="iconContainer mt-5 text-center text-md-start">
                     <font-awesome-icon :icon="['fas', 'chevron-left']" role="button" class="me-5" @click="carouselIndexBack"/>
                     <font-awesome-icon :icon="['fas', 'chevron-right']" role="button" @click="carouselIndexForward" />
                 </div>
-                <div class="greyBackground position-absolute"></div>
+                <div class="greyBackground d-flex d-sm-none d-md-flex position-absolute"></div>
             </div>
         </div>
     </div>
@@ -87,6 +93,49 @@ export default {
 
 <style lang="scss" scoped>
 @use "../../../styles/general.scss" as *;
+
+.slide-fade-enter-from{
+  opacity: 0;
+  transform: translateX(-5px);
+}
+
+.slide-fade-enter-to{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-fade-enter-active
+{
+  transition: all 0.3s;
+}
+
+.fade-enter-from{
+  opacity: 0.5;
+}
+
+.fade-enter-to{
+  opacity: 1;
+}
+
+.fade-enter-active
+{
+  transition: all 0.3s;
+}
+
+@include media-breakpoint-down(md) {
+    .main-container{
+        margin-bottom: 30px;
+        .greyBackground{
+            width: 100%;
+            left: 0;
+            top: 410px;
+        }
+    }
+}
+
+    .textTitle{
+        min-height: 135px;
+    }
     .date{
         color: $mainColor;
     }
