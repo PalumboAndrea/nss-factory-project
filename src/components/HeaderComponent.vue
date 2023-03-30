@@ -48,7 +48,7 @@ export default {
                                     <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="searchIcon"/>
                                 </div>
                                 <p class="hiddenHeaderTitles m-0" v-for="headerMenuTitle in headerMenuTitles">
-                                    {{ headerMenuTitle }}
+                                    <span role="button" >{{ headerMenuTitle }}</span>
                                 </p>
                             </div>
                         </transition>
@@ -133,7 +133,8 @@ export default {
                 min-width: $minWidth;
                 background-color: $mainColor;
                 .hiddenHeaderTitles{
-                    line-height: 40px;
+                    line-height: 50px;
+                    font-size: 25px;
                     color: black;
                     border-bottom: 1px solid white;
                 }
@@ -144,7 +145,7 @@ export default {
                     border-bottom: 1px solid white;
                     border-top: 1px solid white;
                     .searchInput{
-                        width: 50%;
+                        width: 75%;
                         color: black;
                         border: none;
                         border-bottom: 1px solid black;
