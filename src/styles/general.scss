@@ -49,12 +49,20 @@ ul{
     font-family: $uppercaseTitleFont;
     font-weight: 700;
     font-size: 18px;
+    @include media-breakpoint-down(sm) {
+        font-size: 14px;
+        line-height: 70px;
+    }
 }
 
 .mainTitle{
     font-family: $titleFont;
     font-size: 75px;
     line-height: 90px;
+    @include media-breakpoint-down(sm) {
+        font-size: 40px;
+        line-height: 60px;
+    }
 }
 
 .subtitle{
@@ -62,6 +70,9 @@ ul{
     font-weight: 400;
     font-size: 14px;
     line-height: 43px;
+    @include media-breakpoint-down(sm) {
+        line-height: 20px;
+    }
 }
 
 .text{
@@ -70,6 +81,10 @@ ul{
     font-weight: 400;
     font-size: 14px;
     line-height: 35px;
+    @include media-breakpoint-down(sm) {
+        font-size: 15px;
+        line-height: 30px;
+    }
 }
 
 .headerTitles{
@@ -82,8 +97,16 @@ ul{
 .main-container{
     padding: 0 70px;
     margin: 70px 0;
+    @include media-breakpoint-down(sm) {
+        padding: 0 20px;
+        text-align: center;
+    }
 }
 
 .textTitle{
     font-family: $titleFont;
+    font-size: 30px;
+    @include media-breakpoint-down(sm) {
+        font-size: 40px;
+    }
 }
