@@ -43,7 +43,9 @@ export default {
 <template>
     <div class="container-fluid p-0 carouselContainer d-flex align-items-center position-relative">
         <div class="carouselText d-flex flex-column m-auto text-center align-items-center pt-5">
-            <img :src="getImagePath(content[actualIndex].img)" alt="" id="mainImg" class="img-fluid">
+            <transition name="fade" mode="out-in">
+                <img :src="getImagePath(content[actualIndex].img)" alt="" id="mainImg" class="img-fluid" :key="content[actualIndex].img">
+            </transition>
             <p class="text-uppercase mb-5 uppercaseTitle">
                 london collection season
             </p>
@@ -113,6 +115,17 @@ export default {
 .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.1s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0.9;
 }
 
 
