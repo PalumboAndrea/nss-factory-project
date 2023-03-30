@@ -11,6 +11,11 @@ $titleFont: 'Playfair Display', serif;
 $uppercaseTitleFont: 'Montserrat', sans-serif;
 $subtitleFont: 'Merriweather', serif;
 $footerBackground: rgb(51,51,51);
+$minWidth: 350px;
+
+body{
+    min-width: $minWidth;
+}
 
 
 ul{
